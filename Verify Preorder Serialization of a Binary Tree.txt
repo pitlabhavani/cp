@@ -1,0 +1,14 @@
+class Solution:
+    def isValidSerialization(self, preorder: str) -> bool:
+        nodes = preorder.split(',')
+        slots = 1
+
+        for node in nodes:
+            slots -= 1  # Consume one slot for the current node
+            if slots < 0:  # Check if there's not enough slots
+                return False
+
+            if node != '#':  # If current node is not null, add two slots
+                slots += 2
+
+        return slots == 0  # Check if all slots are used up
