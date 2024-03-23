@@ -1,0 +1,21 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        INT_MAX = 2**31 - 1
+        INT_MIN = -2**31
+
+        sign = -1 if x < 0 else 1 # Getting Sign of the Integer
+        x = str(x) # Converting Int. to String
+     
+        rev = ''.join(list(reversed(x))) # Reverse Join
+
+        # If Given Int. is -ve,, then At last of the Reversed String "-" will be there 
+        if rev[-1] == '-': 
+            if INT_MIN < int(rev[:-1]) < INT_MAX: # Checking for Range
+                return sign * (int(rev[:-1]))
+            else:
+                return 0
+        else:
+            if INT_MIN < int(rev) < INT_MAX:
+                return sign * (int(rev))
+            else:
+                return 0
